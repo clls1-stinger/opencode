@@ -2,17 +2,37 @@
   "$schema": "https://opencode.ai/config.json",
   "provider": {
     "opencode": {
-      "options": {},
+      "options": {}
     },
+    "openai-compatible": {
+      "options": {
+        "baseURL": "http://localhost:8051/v1",
+        "apiKey": "dummy"
+      },
+      "models": {
+        "gemini-auto": {
+          "name": "Gemini Load Balancer",
+          "provider": {
+            "npm": "@ai-sdk/openai-compatible",
+            "api": "http://localhost:3000/v1"
+          },
+          "limit": {
+            "context": 128000,
+            "output": 4096
+          }
+        }
+      }
+    }
   },
+  "model": "openai-compatible/gemini-auto",
   "permission": {
     "edit": {
-      "packages/opencode/migration/*": "deny",
-    },
+      "packages/opencode/migration/*": "deny"
+    }
   },
   "mcp": {},
   "tools": {
     "github-triage": false,
-    "github-pr-search": false,
-  },
+    "github-pr-search": false
+  }
 }
